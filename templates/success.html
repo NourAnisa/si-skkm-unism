@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Data Tersimpan</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-50 p-6">
+<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-bold text-green-700 mb-4">Data Berhasil Disimpan ✅</h2>
+    <p><strong>Nama:</strong> {{ nama }}</p>
+    <p><strong>NIM:</strong> {{ nim }}</p>
+    <p><strong>Tahun Ajaran:</strong> {{ ta }}</p>
+    <p><strong>Semester:</strong> {{ semester }}</p>
+    <p><strong>Kegiatan:</strong> {{ kegiatan }}</p>
+    <p><strong>Penyelenggara:</strong> {{ penyelenggara }}</p>
+    <p><strong>Tingkat:</strong> {{ tingkat }}</p>
+    <p><strong>Capaian:</strong> {{ capaian }}</p>
+    <p><strong>Poin SKKM:</strong> {{ poin }}</p>
+    <p><strong>Sertifikat:</strong> <a href="/{{ file_path }}" target="_blank" class="text-blue-600 underline">Lihat File</a></p>
+</div>
+</body>
+</html>

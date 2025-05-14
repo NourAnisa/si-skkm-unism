@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Prestasi Mahasiswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+        <h2 class="text-xl font-bold mb-4">Form Input Prestasi SKKM</h2>
+        <form action="/prestasi/submit" method="post" enctype="multipart/form-data">
+            <input type="text" name="nama" placeholder="Nama Mahasiswa" class="w-full border p-2 mb-3" required>
+            <input type="text" name="nim" placeholder="NIM" class="w-full border p-2 mb-3" required>
+            <input type="text" name="ta" placeholder="Tahun Ajaran (misal: 2024/2025)" class="w-full border p-2 mb-3" required>
+            <input type="text" name="semester" placeholder="Semester (Ganjil/Genap)" class="w-full border p-2 mb-3" required>
+            <input type="text" name="kegiatan" placeholder="Nama Kegiatan" class="w-full border p-2 mb-3" required>
+            <input type="text" name="penyelenggara" placeholder="Penyelenggara" class="w-full border p-2 mb-3" required>
+            <select name="tingkat" class="w-full border p-2 mb-3" required>
+                <option value="">-- Pilih Tingkat --</option>
+                <option>Lokal</option><option>Nasional</option><option>Internasional</option>
+            </select>
+            <select name="capaian" class="w-full border p-2 mb-3" required>
+                <option value="">-- Pilih Capaian --</option>
+                <option>Peserta</option><option>Juara III</option><option>Juara II</option><option>Juara I</option>
+            </select>
+            <label class="block mb-2">Upload Sertifikat (PDF/JPG):</label>
+            <input type="file" name="sertifikat" class="w-full border p-2 mb-4" required>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
