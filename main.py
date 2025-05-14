@@ -15,7 +15,4 @@ app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 templates = Jinja2Templates(directory="templates")
 app.include_router(auth.router)
 app.include_router(prestasi.router)
-
-@app.get("/")
-def home():
     return {"message": "SKKM UNISM is running with full features ✅"}
