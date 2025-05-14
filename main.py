@@ -6,6 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers import auth, prestasi
 
 app = FastAPI()
+@app.get("/")
+def home():
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
