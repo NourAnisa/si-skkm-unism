@@ -27,8 +27,7 @@ async def submit_form(
 ):
     filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{sertifikat.filename}"
     file_path = f"uploads/{filename}"
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(sertifikat.file, buffer)
+    
 
     poin = hitung_poin(tingkat, capaian)
 
