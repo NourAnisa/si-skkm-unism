@@ -1,8 +1,7 @@
 
-from fastapi import APIRouter, Request, Form, UploadFile, File
+from fastapi import APIRouter, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-import shutil
 from datetime import datetime
 
 router = APIRouter()
@@ -23,12 +22,8 @@ async def submit_form(
     penyelenggara: str = Form(...),
     tingkat: str = Form(...),
     capaian: str = Form(...),
-    sertifikat: UploadFile = File(...)
+    link_sertifikat: str = Form(...)
 ):
-    filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{sertifikat.filename}"
-    file_path = f"uploads/{filename}"
-    
-
     poin = hitung_poin(tingkat, capaian)
 
     return templates.TemplateResponse("success.html", {
@@ -42,7 +37,7 @@ async def submit_form(
         "tingkat": tingkat,
         "capaian": capaian,
         "poin": poin,
-        "file_path": file_path
+        "file_path": link_sertifikat
     })
 
 def hitung_poin(tingkat: str, capaian: str) -> int:
