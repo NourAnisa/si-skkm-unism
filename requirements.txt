@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 jinja2
-sqlalchemy
+sqlalchemy[asyncio]
 pydantic
 python-jose
 passlib[bcrypt]
