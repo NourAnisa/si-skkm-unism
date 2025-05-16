@@ -1,26 +1,20 @@
-
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String, Integer, Text, TIMESTAMP
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 from database import Base
 
-class User(Base):
-    __tablename__ = "users"
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    password = Column(String)
-    role = Column(String)
+class PrestasiSKKM(Base):
+    __tablename__ = "prestasi_skkm"
 
-class Prestasi(Base):
-    __tablename__ = "prestasi"
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    nama_kegiatan = Column(String)
-    jenis = Column(String)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    nama = Column(String)
+    nim = Column(String)
+    tahun_ajaran = Column(String)
+    semester = Column(String)
+    kegiatan = Column(Text)
+    penyelenggara = Column(String)
     tingkat = Column(String)
-    peran = Column(String)
-    tahun = Column(String)
-    poin = Column(Integer)
-    sertifikat = Column(String)
-
-    user = relationship("User", back_populates="prestasi")
-User.prestasi = relationship("Prestasi", back_populates="user")
+    capaian = Column(String)
+    poin_skkm = Column(Integer)
+    link_sertifikat = Column(String)
+    created_at = Column(TIMESTAMP, server_default="now()")
