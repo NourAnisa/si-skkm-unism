@@ -10,3 +10,5 @@ python-multipart
 openpyxl
 pandas
 pdfplumber
+asyncpg
+psycopg2-binary
