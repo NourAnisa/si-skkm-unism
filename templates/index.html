@@ -1,1 +1,56 @@
-<h1>SKKM UNISM Home Page</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SKKM UNISM - Landing Page</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-6">
+
+  <div class="text-center mb-6">
+    <img src="https://unism.ac.id/wp-content/uploads/2022/01/cropped-logo-unism-255x255.png" class="mx-auto w-24 mb-4">
+    <h1 class="text-3xl font-bold">Dashboard SKKM UNISM</h1>
+    <p class="text-gray-600">Fakultas Sains dan Teknologi - Prodi Sistem Informasi</p>
+  </div>
+
+  <div class="w-full max-w-2xl bg-white p-6 rounded shadow mb-6">
+    <h2 class="text-lg font-semibold mb-4">Rerata Poin SKKM per Tahun Ajaran</h2>
+    <canvas id="skkmChart" height="120"></canvas>
+  </div>
+
+  <div class="flex space-x-4">
+    <a href="/login" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Login Mahasiswa / Dosen</a>
+  </div>
+
+  <script>
+    fetch('/data/average_scores.json')
+      .then(res => res.json())
+      .then(data => {
+        const ctx = document.getElementById('skkmChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Rerata SKKM',
+              data: data.avg_scores,
+              backgroundColor: 'rgba(59, 130, 246, 0.6)',
+              borderColor: 'rgba(59, 130, 246, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100
+              }
+            }
+          }
+        });
+      });
+  </script>
+
+</body>
+</html>
